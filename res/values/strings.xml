@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Weather Now</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <color name = "primaryDef">#009688</color>
+    <color name = "primaryDarkDef">#00796b</color>
+    <color name = "primaryTextColor">#ffffff</color>
+	<color name = "cardColor">#CED4D3</color>
+</resources>
