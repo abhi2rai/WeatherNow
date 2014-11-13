@@ -127,6 +127,7 @@ containing a value of this type.
         public static final int contentPaddingTop=0x7f010009;
     }
     public static final class color {
+        public static final int activityColor=0x7f040008;
         public static final int cardColor=0x7f040007;
         /**  Background color for dark CardView. 
          */
@@ -171,8 +172,8 @@ containing a value of this type.
     public static final class id {
         public static final int action_settings=0x7f090003;
         public static final int card_view=0x7f090000;
-        public static final int countryImage=0x7f090001;
         public static final int info_text=0x7f090002;
+        public static final int weather_icon=0x7f090001;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -184,6 +185,14 @@ containing a value of this type.
         public static final int action_settings=0x7f060002;
         public static final int app_name=0x7f060000;
         public static final int hello_world=0x7f060001;
+        public static final int weather_clear_night=0x7f060004;
+        public static final int weather_cloudy=0x7f060006;
+        public static final int weather_drizzle=0x7f06000a;
+        public static final int weather_foggy=0x7f060005;
+        public static final int weather_rainy=0x7f060007;
+        public static final int weather_snowy=0x7f060008;
+        public static final int weather_sunny=0x7f060003;
+        public static final int weather_thunder=0x7f060009;
     }
     public static final class style {
         /** 

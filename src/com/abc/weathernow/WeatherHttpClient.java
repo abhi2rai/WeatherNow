@@ -1,7 +1,6 @@
 package com.abc.weathernow;
 
 import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -10,7 +9,6 @@ import java.net.URL;
 public class WeatherHttpClient {
 
 	private static String BASE_URL = "http://api.openweathermap.org/data/2.5/weather?q=";
-	private static String IMG_URL = "http://openweathermap.org/img/w/";
 
 	
 	public String getWeatherData(String location) {
@@ -18,7 +16,7 @@ public class WeatherHttpClient {
 		InputStream is = null;
 
 		try {
-			con = (HttpURLConnection) ( new URL(BASE_URL + location)).openConnection();
+			con = (HttpURLConnection) ( new URL(BASE_URL + location + "&type=accurate")).openConnection();
 			con.setRequestMethod("GET");
 			con.setRequestProperty("x-api-key", "54b8edccc652317dcb64c02bc99dda8a");
 			con.setDoInput(true);
@@ -47,37 +45,5 @@ public class WeatherHttpClient {
 
 		return null;
 				
-	}
-	
-	public byte[] getImage(String code) {
-		HttpURLConnection con = null ;
-		InputStream is = null;
-		try {
-			con = (HttpURLConnection) ( new URL(IMG_URL + code +".png")).openConnection();
-			con.setRequestMethod("GET");
-			con.setRequestProperty("x-api-key", "54b8edccc652317dcb64c02bc99dda8a");
-			con.setDoInput(true);
-			con.connect();
-			
-			// Let's read the response
-			is = con.getInputStream();
-			byte[] buffer = new byte[1024];
-			ByteArrayOutputStream baos = new ByteArrayOutputStream();
-			
-			while ( is.read(buffer) != -1)
-				baos.write(buffer);
-			
-			return baos.toByteArray();
-	    }
-		catch(Throwable t) {
-			t.printStackTrace();
-		}
-		finally {
-			try { is.close(); } catch(Throwable t) {}
-			try { con.disconnect(); } catch(Throwable t) {}
-		}
-		
-		return null;
-		
 	}
 }
