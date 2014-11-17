@@ -15,17 +15,21 @@ public class MainActivity extends Activity {
 
 	private TextView weatherIcon;
 	private TextView temp;
+	private TextView condition;
+	private TextView cityName;
 	Typeface weatherFont;
 	
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        String city = "Delhi,IN";
+        String city = "Rome,IT";
         weatherFont = Typeface.createFromAsset(getAssets(), "fonts/weather.ttf");
         
         weatherIcon = (TextView) findViewById(R.id.weather_icon);
         temp = (TextView) findViewById(R.id.info_text);
+        condition = (TextView) findViewById(R.id.condition);
+        cityName = (TextView) findViewById(R.id.city_name);
         
         weatherIcon.setTypeface(weatherFont);
         
@@ -82,7 +86,9 @@ private class JSONWeatherTask extends AsyncTask<String, Void, Weather> {
 	@Override
 		protected void onPostExecute(Weather weather) {			
 			super.onPostExecute(weather);
-			temp.setText("" + Math.round((weather.temperature.getTemp() - 273.15)) + "\u00b0 C");
+			temp.setText("" + Math.round((weather.temperature.getTemp() - 273.15)) + "\u00b0 C"+"   ("+weather.currentCondition.getCondition()+")");
+			condition.setText(weather.wind.getSpeed()+" mph");
+			cityName.setText(weather.location.getCity()+", "+weather.location.getCountry());
 			setWeatherIcon(weather.currentCondition.getWeatherId(),weather.location.getSunrise(),weather.location.getSunset());
 		}
 	
